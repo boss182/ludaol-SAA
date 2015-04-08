@@ -4,6 +4,8 @@
 	<meta charset="UTF-8">
 	<title>Aduana</title>
 	<link href="{{ asset('/css/main.css') }}" rel="stylesheet">
+	<link href="{{ asset('/bower_components/formbuilder/vendor/css/vendor.css') }}" rel="stylesheet">
+	<link href="{{ asset('/bower_components/formbuilder/dist/formbuilder.css') }}" rel="stylesheet">
 </head>
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top">
@@ -63,9 +65,11 @@
 			</div><!-- /.modal-content -->
 		</div><!-- /.modal-dialog -->
 	</div><!-- /.modal -->
-    <script src="{{ asset('/bower_components/jquery/dist/jquery.min.js')}}"></script>
+    <script src="{{ asset('/bower_components/formbuilder/vendor/js/vendor.js') }}"></script>
+    <!--<script src="{{ asset('/bower_components/jquery/dist/jquery.min.js')}}"></script>-->
     <script src="{{ asset('/bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>
-    <script src="{{ asset('/js/jquery-ui-1.11.4.custom/jquery-ui.min.js') }}"></script>
+    <!--<script src="{{ asset('/js/jquery-ui-1.11.4.custom/jquery-ui.min.js') }}"></script>-->
+  	<script src="{{ asset('/bower_components/formbuilder/dist/formbuilder.js') }}"></script>
     <script>
     	$('.collapse').on('hide.bs.collapse', function () {
 		  $(this).closest('.panel-default').find('.btn-custom i').removeClass('fa-rotate-180');
@@ -81,22 +85,70 @@
 			}
 		});
 		jQuery(function($) {
-        var panelList = $('#draggablePanelList');
+	        var panelList = $('#draggablePanelList');
 
-        panelList.sortable({
-            // Only make the .panel-heading child elements support dragging.
-            // Omit this to make then entire <li>...</li> draggable.
-            handle: '.panel-heading', 
-            update: function() {
-                $('.panel', panelList).each(function(index, elem) {
-                     var $listItem = $(elem),
-                         newIndex = $listItem.index();
-                    console.info(newIndex, index);
-                     // Persist the new indices.
-                });
-            }
-        });
-    });
+	        panelList.sortable({
+	            // Only make the .panel-heading child elements support dragging.
+	            // Omit this to make then entire <li>...</li> draggable.
+	            handle: '.panel-heading', 
+	            update: function() {
+	                $('.panel', panelList).each(function(index, elem) {
+	                     var $listItem = $(elem),
+	                         newIndex = $listItem.index();
+	                    console.info(newIndex, index);
+	                     // Persist the new indices.
+	                });
+	            }
+	        });
+
+	        var fb = new Formbuilder({
+				selector: '.fb-main',
+				bootstrapData: {"fields": [{"field_type": "date", "required": true, "label": "datum", "field_options": {}, "cid": "c2"}]}
+				// bootstrapData: [
+				//   {
+				//     "label": "Do you have a website?",
+				//     "field_type": "website",
+				//     "required": false,
+				//     "field_options": {},
+				//     "cid": "c1"
+				//   },
+				//   {
+				//     "label": "Please enter your clearance number",
+				//     "field_type": "text",
+				//     "required": true,
+				//     "field_options": {},
+				//     "cid": "c6"
+				//   },
+				//   {
+				//     "label": "Security personnel #82?",
+				//     "field_type": "radio",
+				//     "required": true,
+				//     "field_options": {
+				//         "options": [{
+				//             "label": "Yes",
+				//             "checked": false
+				//         }, {
+				//             "label": "No",
+				//             "checked": false
+				//         }],
+				//         "include_other_option": true
+				//     },
+				//     "cid": "c10"
+				//   },
+				//   {
+				//     "label": "Medical history",
+				//     "field_type": "file",
+				//     "required": true,
+				//     "field_options": {},
+				//     "cid": "c14"
+				//   }
+				// ]
+			});
+
+			fb.on('save', function(payload){
+				console.log(payload);
+			});
+	    });
     </script>
 </body>
 </html>

@@ -8,7 +8,7 @@
 			<a href="#home" class="tab-inner" aria-controls="home" role="tab" data-toggle="tab">Home</a>
 		</li>
 		<li role="presentation">
-			<a href="#profile" class="tab-inner" aria-controls="profile" role="tab" data-toggle="tab">Profile</a>
+			<a href="#formBuilder" class="tab-inner" aria-controls="formBuilder" role="tab" data-toggle="tab">FormBuilder</a>
 		</li>
 		</ul>
 		<div class="tab-content">
@@ -277,8 +277,8 @@
 				</div>
 			</div>
 		</div>
-		<div role="tabpanel" class="tab-pane" id="profile">
-			<p>Panel 2</p>
+		<div role="tabpanel" class="tab-pane" id="formBuilder">
+			<div class='fb-main'></div>
 		</div>
 	</div>
 </div>

@@ -20,6 +20,7 @@
   "dependencies": {
     "normalize.css": "~3.0.3",
     "fontawesome": "~4.3.0",
-    "bootstrap": "~3.3.4"
+    "bootstrap": "~3.3.4",
+    "formbuilder": "~0.2.1"
   }
 }
