@@ -1,0 +1,5 @@
+suites:
+    main:
+        namespace: Aduana
+        psr4_prefix: Aduana
+        src_path: app
